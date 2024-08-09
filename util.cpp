@@ -28,7 +28,7 @@ void Util::showErrorMsg(QWidget *parent,QString errMsg) {
 
 void Util::readFile(QString filename) {
     QFile file (filename);
-    if ( !file.open(QIODevice::ReadOnly) ) {
+    if ( !file.open(QIODevice::ReadWrite) ) {
         qDebug() << "파일 생성 실패";
         return;
     }
@@ -43,7 +43,7 @@ void Util::readFile(QString filename) {
 
 bool Util::findID(QString filename,QString search) {
     QFile file (filename);
-    if ( !file.open(QIODevice::ReadOnly) ) {
+    if ( !file.open(QIODevice::ReadWrite) ) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }
@@ -66,7 +66,7 @@ bool Util::findID(QString filename,QString search) {
 
 QString Util::findIDPW(QString filename,QString search) {
     QFile file (filename);
-    if ( !file.open(QIODevice::ReadOnly) ) {
+    if ( !file.open(QIODevice::ReadWrite) ) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }

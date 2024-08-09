@@ -6,6 +6,8 @@ Manager::Manager(QWidget *parent)
 
     managerView = new QFrame;
     managerView->setGeometry(QRect(0,0,1000,600));
-
-
+    // fileToolBar = addToolBar("&File");
+    managerToolBar = new QToolBar(this);
+    managerToolBar->addSeparator();
+    // managerToolBar->addAction();
 }

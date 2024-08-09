@@ -3,13 +3,14 @@
 
 #include <QWidget>
 #include <QFrame>
+#include <QToolBar>
 
 class Manager : public QWidget
 {
     Q_OBJECT
 private:
     QFrame* managerView;
-
+    QToolBar *managerToolBar;
 public:
     explicit Manager(QWidget *parent = nullptr);
 

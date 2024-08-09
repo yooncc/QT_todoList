@@ -22,9 +22,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(QT_todoList
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        test.h test.cpp
-        test2.h test2.cpp
-        test3.h test3.cpp
+
+
+
+        user.h user.cpp
+        mainwindow.h mainwindow.cpp
+        clickablelabel.h clickablelabel.cpp
+        userlistedit.h userlistedit.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET QT_todoList APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

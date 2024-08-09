@@ -3,6 +3,7 @@
 
 #include <QWidget>
 
+
 class mainView : public QWidget
 {
     Q_OBJECT

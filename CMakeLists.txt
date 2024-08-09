@@ -24,13 +24,15 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
 
 
-
         login.h login.cpp
         util.h util.cpp
         sign.h sign.cpp
         mainwindow.h mainwindow.cpp
         pwfind.h pwfind.cpp
         manager.h manager.cpp
+        user.h user.cpp
+        clickablelabel.h clickablelabel.cpp
+        userlistedit.h userlistedit.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET QT_todoList APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

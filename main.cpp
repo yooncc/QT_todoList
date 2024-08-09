@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include "mainview.h"
 #include "login.h"
-
-#include <QStackedLayout>
+#include "user.h"
 
 #include <QApplication>
 
@@ -13,16 +12,5 @@ int main(int argc, char *argv[])
     MainWindow m;
     m.show();
 
-    // Login login;
-    // login.show();
-
-
-
-
-    // mainView w;
-
-
-
-    // w.show();
     return a.exec();
 }

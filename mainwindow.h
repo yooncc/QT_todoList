@@ -6,6 +6,7 @@
 #include "manager.h"
 #include <QDockWidget>
 
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -15,6 +16,7 @@ private:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void successedLogin(QString id);
+
 
 signals:
 };

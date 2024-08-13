@@ -28,6 +28,11 @@ void MainWindow::successedLogin(QString id) {
         // dock->setWidget(this);
     }
     else {  // 일반회원 로그인
-
+        user = new User();
+        login->close();
+        setCentralWidget(user);
+        this->setGeometry(QRect(100, 100, 1000, 600));
+        QLabel* label = new QLabel(id);
+        label->setAlignment(Qt::AlignRight);
     }
 }

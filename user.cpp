@@ -1,5 +1,4 @@
 #include "user.h"
-#include "userlistedit.h"
 
 User::User(QWidget *parent)
     : QWidget(parent)
@@ -17,15 +16,6 @@ User::User(QWidget *parent)
     addButton = new QPushButton("Add");
     connect(addButton, SIGNAL(clicked()), SLOT(addNewlist()));
 
-//    QPushButton* modButton = new QPushButton("Modify");
-//    connect(modButton, SIGNAL(clicked()), SLOT(modifyList()));
-
-//    QPushButton* delButton = new QPushButton("Delete");
-//    connect(delButton, SIGNAL(clicked()), SLOT(deleteList()));
-
-//    QPushButton* doneButton = new QPushButton("Done");
-//   connect(delButton, SIGNAL(clicked()), SLOT(isDone()));
-
 //    labelbox = new QGroupBox("&Today's list to do", this);
 //    formLayout = new QFormLayout;
 //    labelbox->move(5, 70);
@@ -38,12 +28,6 @@ User::User(QWidget *parent)
     grid->addWidget(loadButton, 0, 0, 1, 2);
     grid->addWidget(addButton, 1, 0, 1, 2);
 //    grid->addWidget(labelList, 2, 0);
-
-
-//    label = new ClickableLabel(this);
-//    label->setText("Click");
-//    grid->addWidget(label);
-//    connect(label, &ClickableLabel::clicked, this, &User::onLabelClicked);
 
     //기존 창 -> to do list, add버튼만 보이도록함
     //label 클릭하면 수정, 삭제, 완료 버튼 보임
@@ -60,6 +44,9 @@ void User::addNewlist(){ //새로운 리스트 추가하기 위해 lineedit 생�
     label->setText(addList);
     grid->addWidget(label, count+2, 0);
     connect(label, &ClickableLabel::clicked, this, &User::onLabelClicked);
+/*    connect(label, &ClickableLabel::clicked, this, [label](){
+        onLabelClicked();
+    });*/
     count++;
 
 //    formLayout->addRow(listLabel);
@@ -70,10 +57,23 @@ void User::addNewlist(){ //새로운 리스트 추가하기 위해 lineedit 생�
 void User::loadList(){
     qDebug("Load");
 }
-void User::onLabelClicked(){
-    qDebug("label clicked");
-    userListEdit u;
-    u.show();
-//    QMessageBox::question(this, "list edit", "Select Menu", QMessageBox::Ok|QMessageBox::Cancel);
+void User::onLabelClicked(ClickableLabel* label){
+    this->currentL = label;
+    userlist = new userListEdit(this);
+    userlist->show();
+}
+void User::modListLabel(){
+    currentL->setText(userlist->mod);
+    qDebug()<<userlist->mod;
+}
+void User::delListLabel(){
+    qDebug()<<currentL->text()+" DELETE";
+    grid->removeWidget(currentL);
+    currentL->deleteLater();
+//    count--;
+}
+void User::doneListLabel(){
+    currentL->setText("<span style='text-decoration: line-through;'>" + currentL->text() + "</span>");
+    currentL->setStyleSheet("QLabel { color : gray; }");
 }
 User::~User(){}

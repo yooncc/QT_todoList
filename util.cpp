@@ -26,18 +26,18 @@ void Util::showErrorMsg(QWidget *parent,QString errMsg) {
                           );
 }
 
-void Util::readFile(QString filename) {
+QString Util::readFile(QString filename) {
     QFile file (filename);
     if ( !file.open(QIODevice::ReadWrite) ) {
         qDebug() << "파일 생성 실패";
-        return;
+        exit(0);
     }
     QTextStream in (&file);
-    QString line = in.readLine ();
-
-    while (!line.isNull()) {
-        qDebug() << line;
+    QString line="";
+    while (!in.atEnd()) {
+        line.append(in.readLine());
     }
+    return line;
     file.close();
 }
 
@@ -78,6 +78,7 @@ QString Util::findIDPW(QString filename,QString search) {
         qDebug() << line;
         qDebug() << line.split(";")[0];
         if (line.split(";")[0] == search) {
+            file.close();
             return line;
         }
     }
@@ -95,3 +96,56 @@ void Util::writeFile(QString filename,QString input) {
     file.write(msg);
     file.close();
 }
+
+bool Util::deleteFile(QString filename,QString input) {
+
+    QFile file (filename);
+    if ( !file.open(QIODevice::ReadWrite) ) {
+        qDebug() << "파일 생성 실패";
+        exit(0);
+    }
+    QTextStream in (&file);
+    QString line;
+    QString newInfo="";
+    bool isFind = false;
+    while (!in.atEnd()) {
+        line = in.readLine ();
+        if (line.split(";")[0] == input) {
+            isFind = true;
+        }
+        else {
+            newInfo.append(line+"\n");
+        }
+    }
+    qDebug() << newInfo;
+    file.close();
+    if (isFind) {
+        if ( !file.open(QIODevice::ReadWrite|QIODevice::Truncate) ) {
+            qDebug() << "파일 생성 실패";
+            exit(0);
+        }
+        QByteArray msg = newInfo.toUtf8();
+        file.write(msg);
+        file.close();
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
+QAction* Util::makeAction(QString icon,QString text,QString shortCut,\
+                              QString toolTip,QObject* recv,const char* slot) {
+    QAction *act = new QAction(text,this);
+    if (icon.length())
+        act->setIcon(QIcon(icon));
+    act->setShortcut(shortCut);
+    act->setStatusTip(toolTip);
+    connect(act,SIGNAL(triggered(bool)),recv,slot);
+    return act;
+}
+
+// void Util::showLoadingView(double duration,QObject* where) {
+
+// }

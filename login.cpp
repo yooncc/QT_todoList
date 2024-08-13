@@ -71,7 +71,7 @@ void Login::startFindPw() {
 
 void Login::programHelp() {
     QMessageBox::information(this,"도움말",
-                             "도움말을 입력하세용",
+                             "admin 계정으로 로그인하면 매니저권한으로 접속합니다.\nID:admin, PW:123123",
                              QMessageBox::Yes
                             );
 

@@ -13,7 +13,9 @@
 #include <QFormLayout>
 #include <QMouseEvent>
 #include <QMessageBox>
+#include <QLineEdit>
 #include "clickablelabel.h"
+#include "userlistedit.h"
 
 class User :public QWidget
 {
@@ -21,6 +23,12 @@ class User :public QWidget
 public:
     explicit User(QWidget *parent = nullptr);
     ~User();
+    userListEdit* userlist;
+    ClickableLabel* label;
+    void modListLabel();
+    void delListLabel();
+    void doneListLabel();
+    ClickableLabel* currentL;
 
 signals:
     void clicked();
@@ -28,8 +36,7 @@ signals:
 public slots:
     void addNewlist();
     void loadList();
-//    void onLabelClicked();
-    void onLabelClicked();
+    void onLabelClicked(ClickableLabel* label);
 
 private:
     int count = 0;
@@ -41,7 +48,7 @@ private:
     QGroupBox* labelbox;
     QFormLayout* formLayout;
 
-    ClickableLabel* label;
+//    ClickableLabel* label;
 };
 
 #endif // USER_H

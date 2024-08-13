@@ -5,6 +5,7 @@
 #include "login.h"
 #include "manager.h"
 #include <QDockWidget>
+#include "user.h"
 
 
 class MainWindow : public QMainWindow
@@ -13,6 +14,7 @@ class MainWindow : public QMainWindow
 private:
     Login* login;
     Manager* manager;
+    User* user;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void successedLogin(QString id);

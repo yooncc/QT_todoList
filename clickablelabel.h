@@ -4,18 +4,19 @@
 #include <QLabel>
 #include <QMouseEvent>
 
-class ClickableLabel : public QLabel {
+class ClickableLabel : public QLabel
+{
     Q_OBJECT
 
 public:
-    explicit ClickableLabel(QWidget* parent = nullptr);
+    explicit ClickableLabel(QWidget *parent = nullptr);
     ~ClickableLabel();
 
 signals:
-    void clicked(ClickableLabel* label);
+    void clicked(ClickableLabel *label);
 
 protected:
-    void mousePressEvent(QMouseEvent* event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // CLICKABLELABEL_H

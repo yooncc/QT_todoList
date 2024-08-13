@@ -1,21 +1,22 @@
 #ifndef SIGN_H
 #define SIGN_H
 
-#include <QWidget>
+#include <QFrame>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QFrame>
+#include <QWidget>
 #include "util.h"
 
 class sign : public QWidget
 {
     Q_OBJECT
 private:
-    QFrame* signView;
-    QLineEdit* idField;
-    QLineEdit* pwField;
-    QLineEdit* repwField;
-    QPushButton* signUpBtn;
+    QFrame *signView;
+    QLineEdit *idField;
+    QLineEdit *pwField;
+    QLineEdit *repwField;
+    QPushButton *signUpBtn;
+
 public:
     explicit sign(QWidget *parent = nullptr);
     Util util;
@@ -25,7 +26,6 @@ public slots:
     void signUpProcess();
 
 signals:
-
 };
 
 #endif // SIGN_H

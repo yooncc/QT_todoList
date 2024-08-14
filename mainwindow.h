@@ -18,6 +18,7 @@ private:
     Login* login;
     Manager* manager;
     QToolBar *managerToolBar;
+    QDockWidget *dock;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void successedLogin(QString id);
@@ -27,6 +28,7 @@ public slots:
     void managerDelete();
     void managerChange();
     void managerFind();
+    void managerLogout();
 
 
 signals:

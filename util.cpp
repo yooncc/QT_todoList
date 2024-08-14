@@ -41,6 +41,21 @@ QString Util::readFile(QString filename) {
     file.close();
 }
 
+QString Util::searchToDoInFile(QString filename) {
+    QFile file (filename);
+    if ( !file.open(QIODevice::ReadWrite) ) {
+        qDebug() << "파일 생성 실패";
+        exit(0);
+    }
+    QTextStream in (&file);
+    QString line="";
+    while (!in.atEnd()) {
+        line.append(in.readLine()+";");
+    }
+    file.close();
+    return line;
+}
+
 bool Util::findID(QString filename,QString search) {
     QFile file (filename);
     if ( !file.open(QIODevice::ReadWrite) ) {

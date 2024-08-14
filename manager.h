@@ -27,12 +27,17 @@ private:
     QCalendarWidget* managerCalendar;
     QGridLayout *memberGridLayout;
     QWidget *containerWidget;
+    QGridLayout *toDoGridLayout;
+    QWidget *toDoContainerWidget;
 public:
     explicit Manager(QWidget *parent = nullptr);
     Util util;
+    QLabel* memberNameLabel;
     void getUserInfo();
+    void getUserToDo(QString);
 public slots:
     void memberBtnPressed();
+    void memberFindBtnPressed();
 
 signals:
 };

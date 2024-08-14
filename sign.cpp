@@ -48,6 +48,10 @@ void sign::signUpProcess() {
         return;
     }
     // 중복 아이디체크
+    if (idField->text() == "admin") {
+        util.showErrorMsg(this,"사용할 수 없는 아이디입니다.");
+        return;
+    }
     bool isExistID = util.findID("user_info.txt",idField->text());
     if (isExistID) {
         util.showErrorMsg(this,"이미 존재하는 아이디입니다.");

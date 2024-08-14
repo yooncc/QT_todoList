@@ -20,6 +20,7 @@ public:
     void writeFile(QString filename,QString input);
     bool deleteFile(QString filename,QString input);
     bool findID(QString filename,QString search);
+    QString searchToDoInFile(QString filename);
     QString findIDPW(QString filename,QString search);
     QAction *makeAction(QString icon,QString text,QString shortCut,\
                         QString toolTip,QObject* recv,const char* slot);

@@ -27,10 +27,16 @@ void MainWindow::successedLogin(QString id)
         // dock->setWidget(this);
     } else { // 일반회원 로그인
         user = new User();
+        user->id = id;
         login->close();
         setCentralWidget(user);
         this->setGeometry(QRect(100, 100, 1000, 600));
-        QLabel *label = new QLabel(id);
-        label->setAlignment(Qt::AlignRight);
+    //    QLabel *label = new QLabel(id);
+    //    label->setAlignment(Qt::AlignRight);
     }
+}
+void MainWindow::logout(){
+    this->setGeometry(QRect(0, 0, 200, 200));
+    login = new Login();
+    setCentralWidget(login);
 }

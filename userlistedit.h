@@ -12,6 +12,11 @@ public:
     QLabel *listLabel;
     QLineEdit *line;
     QString mod;
+    Util util;
+    QPushButton *delButton;
+    QPushButton *modButton;
+    QPushButton *doneButton;
+    QPushButton *cancle;
 
 public slots:
     void deleteList();
@@ -27,7 +32,9 @@ private:
     QGroupBox *labelbox;
     QFormLayout *formLayout;
     ClickableLabel *label;
-    //   QLineEdit* line;
+    QHBoxLayout* boxLayout;
+    QGroupBox *buttonbox;
+    QFrame* editview;
 };
 
 #endif // USERLISTEDIT_H

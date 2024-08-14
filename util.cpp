@@ -43,7 +43,6 @@ void Util::readFile(QString filename)
     }
     file.close();
 }
-
 bool Util::findID(QString filename, QString search)
 {
     QFile file(filename);
@@ -83,6 +82,7 @@ QString Util::findIDPW(QString filename, QString search)
         qDebug() << line;
         qDebug() << line.split(";")[0];
         if (line.split(";")[0] == search) {
+            file.close();
             return line;
         }
     }
@@ -99,5 +99,20 @@ void Util::writeFile(QString filename, QString input)
     }
     QByteArray msg = input.toUtf8();
     file.write(msg);
+    file.close();
+}
+void Util::writeList(QString filename, QList<ClickableLabel*> list)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
+        qDebug() << "파일 생성 실패";
+        return;
+    }
+    for(int i=0;i<list.size();i++){
+    //    QByteArray msg = input.toUtf8();
+        QString line = list[i]->text()+"\n";
+        QByteArray msg = line.toUtf8();
+        file.write(msg);
+    }
     file.close();
 }

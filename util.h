@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QObject>
 #include <QPushButton>
+#include <QList>
+#include "clickablelabel.h"
 
 class Util : public QObject
 {
@@ -22,6 +24,7 @@ public:
     void writeFile(QString filename, QString input);
     bool findID(QString filename, QString search);
     QString findIDPW(QString filename, QString search);
+    void writeList(QString filename, QList<ClickableLabel*> list);
 
 signals:
 };

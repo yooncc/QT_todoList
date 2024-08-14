@@ -13,9 +13,11 @@
 #include <QWidget>
 #include <QtWidgets>
 #include <QList>
+#include <QFile>
 #include "util.h"
 #include "clickablelabel.h"
 #include "userlistedit.h"
+
 
 
 class User : public QWidget
@@ -26,11 +28,13 @@ public:
     ~User();
     userListEdit* userlist;
     ClickableLabel *label;
+    ClickableLabel *currentL;
     void modListLabel();
     void delListLabel();
     void doneListLabel();
-    ClickableLabel *currentL;
     Util util;
+    QString id;
+    void readList(QString filename, QList<ClickableLabel*>& list, bool clear = false);
 
 signals:
     void clicked();
@@ -40,16 +44,18 @@ public slots:
     void loadList();
     void saveList();
     void onLabelClicked(ClickableLabel *label);
+    void logoutUser();
 
 private:
-    int count = 0;
     QPushButton *addButton;
     QPushButton *loadButton;
     QPushButton* saveButton;
+    QPushButton* logoutB;
     QFrame* userview;
     QVBoxLayout* boxLayout;
     QGroupBox *labelbox;
     QList<ClickableLabel*> labels;
+    QList<ClickableLabel*> doneLabels;
 };
 
 #endif // USER_H

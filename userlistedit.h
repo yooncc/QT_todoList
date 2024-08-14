@@ -3,6 +3,7 @@
 #define USERLISTEDIT_H
 
 #include "user.h"
+#include "util.h"
 
 class userListEdit : public QWidget
 {
@@ -32,9 +33,9 @@ private:
     QGroupBox *labelbox;
     QFormLayout *formLayout;
     ClickableLabel *label;
-    QHBoxLayout* boxLayout;
+    QHBoxLayout *boxLayout;
     QGroupBox *buttonbox;
-    QFrame* editview;
+    QFrame *editview;
 };
 
 #endif // USERLISTEDIT_H

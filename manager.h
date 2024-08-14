@@ -1,43 +1,43 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
+#include <QCalendarWidget>
 #include <QFrame>
-#include <QScrollArea>
-#include <QScrollBar>
+#include <QGridLayout>
+#include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QLabel>
-#include <QCalendarWidget>
-#include <QGridLayout>
+#include <QScrollArea>
+#include <QScrollBar>
 #include "util.h"
 
 class Manager : public QWidget
 {
     Q_OBJECT
 private:
-    QFrame* managerView;
-    QLabel* memberListLabel;
-    QScrollArea* scrollArea;
-    QScrollBar* scrollSlider;
-    QLineEdit* memberFindField;
-    QPushButton* memberFindBtn;
-    QScrollArea* memberToDoArea;
-    QScrollBar* memberToDoSlider;
-    QCalendarWidget* managerCalendar;
+    QFrame *managerView;
+    QLabel *memberListLabel;
+    QScrollArea *scrollArea;
+    QScrollBar *scrollSlider;
+    QLineEdit *memberFindField;
+    QPushButton *memberFindBtn;
+    QScrollArea *memberToDoArea;
+    QScrollBar *memberToDoSlider;
+    QCalendarWidget *managerCalendar;
     QGridLayout *memberGridLayout;
     QWidget *containerWidget;
     QGridLayout *toDoGridLayout;
     QWidget *toDoContainerWidget;
+
 public:
     explicit Manager(QWidget *parent = nullptr);
     Util util;
-    QLabel* memberNameLabel;
+    QLabel *memberNameLabel;
     void getUserInfo();
     void getUserToDo(QString);
 public slots:
     void memberBtnPressed();
     void memberFindBtnPressed();
-
 
 signals:
 };

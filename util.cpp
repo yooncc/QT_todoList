@@ -28,15 +28,15 @@ void Util::showErrorMsg(QWidget *parent, QString errMsg)
     QMessageBox::question(parent, "에러 발생", errMsg, QMessageBox::Yes);
 }
 
-QString Util::readFile(QString filename) {
-    QFile file (filename);
-    if ( !file.open(QIODevice::ReadWrite) ) {
-
+QString Util::readFile(QString filename)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite)) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }
-    QTextStream in (&file);
-    QString line="";
+    QTextStream in(&file);
+    QString line = "";
     while (!in.atEnd()) {
         line.append(in.readLine());
     }
@@ -44,16 +44,17 @@ QString Util::readFile(QString filename) {
     return line;
 }
 
-QString Util::searchToDoInFile(QString filename) {
-    QFile file (filename);
-    if ( !file.open(QIODevice::ReadWrite) ) {
+QString Util::searchToDoInFile(QString filename)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite)) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }
-    QTextStream in (&file);
-    QString line="";
+    QTextStream in(&file);
+    QString line = "";
     while (!in.atEnd()) {
-        line.append(in.readLine()+";");
+        line.append(in.readLine() + ";");
     }
     file.close();
     return line;
@@ -138,46 +139,45 @@ void Util::writeFile(QString filename, QString input)
     file.write(msg);
     file.close();
 }
-void Util::writeList(QString filename, QList<ClickableLabel*> list)
+void Util::writeList(QString filename, QList<ClickableLabel *> list)
 {
     QFile file(filename);
     if (!file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
         qDebug() << "파일 생성 실패";
         return;
     }
-    for(int i=0;i<list.size();i++){
-    //    QByteArray msg = input.toUtf8();
-        QString line = list[i]->text()+"\n";
+    for (int i = 0; i < list.size(); i++) {
+        //    QByteArray msg = input.toUtf8();
+        QString line = list[i]->text() + "\n";
         QByteArray msg = line.toUtf8();
         file.write(msg);
     }
     file.close();
 }
 
-bool Util::deleteFile(QString filename,QString input) {
-
-    QFile file (filename);
-    if ( !file.open(QIODevice::ReadWrite) ) {
+bool Util::deleteFile(QString filename, QString input)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite)) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }
-    QTextStream in (&file);
+    QTextStream in(&file);
     QString line;
-    QString newInfo="";
+    QString newInfo = "";
     bool isFind = false;
     while (!in.atEnd()) {
-        line = in.readLine ();
+        line = in.readLine();
         if (line.split(";")[0] == input) {
             isFind = true;
-        }
-        else {
-            newInfo.append(line+"\n");
+        } else {
+            newInfo.append(line + "\n");
         }
     }
     qDebug() << newInfo;
     file.close();
     if (isFind) {
-        if ( !file.open(QIODevice::ReadWrite|QIODevice::Truncate) ) {
+        if (!file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
             qDebug() << "파일 생성 실패";
             exit(0);
         }
@@ -185,21 +185,19 @@ bool Util::deleteFile(QString filename,QString input) {
         file.write(msg);
         file.close();
         return true;
-    }
-    else {
+    } else {
         return false;
     }
-
 }
 
-QAction* Util::makeAction(QString icon,QString text,QString shortCut,\
-                              QString toolTip,QObject* recv,const char* slot) {
-    QAction *act = new QAction(text,this);
+QAction *Util::makeAction(
+    QString icon, QString text, QString shortCut, QString toolTip, QObject *recv, const char *slot)
+{
+    QAction *act = new QAction(text, this);
     if (icon.length())
         act->setIcon(QIcon(icon));
     act->setShortcut(shortCut);
     act->setStatusTip(toolTip);
-    connect(act,SIGNAL(triggered(bool)),recv,slot);
+    connect(act, SIGNAL(triggered(bool)), recv, slot);
     return act;
 }
-

@@ -2,25 +2,23 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QDockWidget>
-#include <QMainWindow>
-#include <QDockWidget>
-#include <QToolBar>
-#include <QFormLayout>
 #include <QDialogButtonBox>
+#include <QDockWidget>
+#include <QFormLayout>
+#include <QMainWindow>
+#include <QToolBar>
 #include "login.h"
 #include "manager.h"
-#include "util.h"
 #include "user.h"
-
+#include "util.h"
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
-    Login* login;
-    User* user;
-    Manager* manager;
+    Login *login;
+    User *user;
+    Manager *manager;
     QToolBar *managerToolBar;
     QDockWidget *dock;
 

@@ -53,21 +53,18 @@ void Login::startLogin()
     }
 
     if (idField->text() == "admin" && pwField->text() == "123123") {
-        ((MainWindow*)(this->parent()))->successedLogin(idField->text());
-    }
-    else {
-        QString res = util.findIDPW("user_info.txt",idField->text());
+        ((MainWindow *) (this->parent()))->successedLogin(idField->text());
+    } else {
+        QString res = util.findIDPW("user_info.txt", idField->text());
         if (res != "") {
             if (pwField->text() == res.split(";")[1].removeLast()) {
                 qDebug("로그인 성공!");
-                ((MainWindow*)(this->parent()))->successedLogin(idField->text());
-            }
-            else {
+                ((MainWindow *) (this->parent()))->successedLogin(idField->text());
+            } else {
                 qDebug("비밀번호가 틀립니다!");
             }
-        }
-        else {
-            util.showErrorMsg(this,"존재하지 않는 아이디입니다.");
+        } else {
+            util.showErrorMsg(this, "존재하지 않는 아이디입니다.");
         }
     }
 }
@@ -84,9 +81,11 @@ void Login::startFindPw()
     pwfind->show();
 }
 
-void Login::programHelp() {
-    QMessageBox::information(this,"도움말",
-                             "admin 계정으로 로그인하면 매니저권한으로 접속합니다.\nID:admin, PW:123123",
-                             QMessageBox::Yes
-                            );
+void Login::programHelp()
+{
+    QMessageBox::information(
+        this,
+        "도움말",
+        "admin 계정으로 로그인하면 매니저권한으로 접속합니다.\nID:admin, PW:123123",
+        QMessageBox::Yes);
 }

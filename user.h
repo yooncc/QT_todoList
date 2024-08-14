@@ -2,23 +2,21 @@
 #ifndef USER_H
 #define USER_H
 
+#include <QFile>
 #include <QFrame>
 #include <QGridLayout>
-#include <QVBoxLayout>
 #include <QGroupBox>
 #include <QInputDialog>
 #include <QLineEdit>
+#include <QList>
 #include <QMouseEvent>
 #include <QObject>
+#include <QVBoxLayout>
 #include <QWidget>
 #include <QtWidgets>
-#include <QList>
-#include <QFile>
-#include "util.h"
 #include "clickablelabel.h"
 #include "userlistedit.h"
-
-
+#include "util.h"
 
 class User : public QWidget
 {
@@ -26,7 +24,7 @@ class User : public QWidget
 public:
     explicit User(QWidget *parent = nullptr);
     ~User();
-    userListEdit* userlist;
+    userListEdit *userlist;
     ClickableLabel *label;
     ClickableLabel *currentL;
     void modListLabel();
@@ -34,7 +32,7 @@ public:
     void doneListLabel();
     Util util;
     QString id;
-    void readList(QString filename, QList<ClickableLabel*>& list, bool clear = false);
+    void readList(QString filename, QList<ClickableLabel *> &list, bool clear = false);
 
 signals:
     void clicked();
@@ -49,13 +47,13 @@ public slots:
 private:
     QPushButton *addButton;
     QPushButton *loadButton;
-    QPushButton* saveButton;
-    QPushButton* logoutB;
-    QFrame* userview;
-    QVBoxLayout* boxLayout;
+    QPushButton *saveButton;
+    QPushButton *logoutB;
+    QFrame *userview;
+    QVBoxLayout *boxLayout;
     QGroupBox *labelbox;
-    QList<ClickableLabel*> labels;
-    QList<ClickableLabel*> doneLabels;
+    QList<ClickableLabel *> labels;
+    QList<ClickableLabel *> doneLabels;
 };
 
 #endif // USER_H

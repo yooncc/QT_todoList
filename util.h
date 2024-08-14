@@ -3,10 +3,10 @@
 
 #include <QDir>
 #include <QFile>
+#include <QList>
 #include <QMessageBox>
 #include <QObject>
 #include <QPushButton>
-#include <QList>
 #include "clickablelabel.h"
 
 class Util : public QObject
@@ -24,13 +24,17 @@ public:
     bool findID(QString filename, QString search);
     QString findPW(QString filename, QString search);
     QString findIDPW(QString filename, QString search);
-    void writeList(QString filename, QList<ClickableLabel*> list);
-    QPushButton* makePushButton(QWidget *parent,QString name,QString fontName,int fontSize,bool isBold,QString icon);
-    bool deleteFile(QString filename,QString input);
+    void writeList(QString filename, QList<ClickableLabel *> list);
+    QPushButton *makePushButton(
+        QWidget *parent, QString name, QString fontName, int fontSize, bool isBold, QString icon);
+    bool deleteFile(QString filename, QString input);
     QString searchToDoInFile(QString filename);
-    QAction *makeAction(QString icon,QString text,QString shortCut,\
-                        QString toolTip,QObject* recv,const char* slot);
-
+    QAction *makeAction(QString icon,
+                        QString text,
+                        QString shortCut,
+                        QString toolTip,
+                        QObject *recv,
+                        const char *slot);
 
 signals:
 };

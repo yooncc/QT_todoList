@@ -3,7 +3,6 @@
 userListEdit::userListEdit(QWidget *parent)
     : QWidget{parent}
 {
-
     editview = new QFrame(this);
     editview->setGeometry(QRect(0, 0, 400, 400));
 
@@ -25,7 +24,6 @@ userListEdit::userListEdit(QWidget *parent)
     boxLayout->addWidget(modButton);
     boxLayout->addWidget(doneButton);
     boxLayout->addWidget(cancle);
-
 }
 void userListEdit::deleteList()
 { //리스트 삭제

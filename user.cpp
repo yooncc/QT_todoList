@@ -48,12 +48,12 @@ void User::loadList()
     qDebug("Load");
     qDebug()<<labels.count();
     readList(id+".txt", labels, false); //일반 list
-    readList(id+"done.txt", doneLabels, true); //done list
+    readList(id+"_done.txt", doneLabels, true); //done list
 }
 void User::saveList(){
     qDebug("Save");
     util.writeList(id+".txt", labels);
-    util.writeList(id+"done.txt", doneLabels);
+    util.writeList(id+"_done.txt", doneLabels);
 }
 void User::onLabelClicked(ClickableLabel *label)
 {

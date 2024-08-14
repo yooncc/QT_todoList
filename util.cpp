@@ -40,8 +40,8 @@ QString Util::readFile(QString filename) {
     while (!in.atEnd()) {
         line.append(in.readLine());
     }
-    return line;
     file.close();
+    return line;
 }
 
 QString Util::searchToDoInFile(QString filename) {
@@ -81,7 +81,29 @@ bool Util::findID(QString filename, QString search)
     file.close();
     return isFind;
 }
+QString Util::findPW(QString filename, QString search)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite)) {
+        qDebug() << "파일 생성 실패";
+        exit(0);
+    }
 
+    QTextStream in(&file);
+    QString line;
+    while (!in.atEnd()) {
+        line = in.readLine();
+        qDebug() << line;
+        qDebug() << line.split(";")[0];
+        if (line.split(";")[0] == search) {
+            file.close();
+            return line.split(";")[1];
+            break;
+        }
+    }
+    file.close();
+    return "";
+}
 QString Util::findIDPW(QString filename, QString search)
 {
     QFile file(filename);

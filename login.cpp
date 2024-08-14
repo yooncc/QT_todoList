@@ -69,8 +69,6 @@ void Login::startLogin()
         else {
             util.showErrorMsg(this,"존재하지 않는 아이디입니다.");
         }
-    } else {
-        util.showErrorMsg(this, "존재하지 않는 아이디입니다.");
     }
 }
 

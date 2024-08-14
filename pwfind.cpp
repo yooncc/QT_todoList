@@ -4,7 +4,7 @@ PwFind::PwFind(QWidget *parent)
     : QWidget{parent}
 {
     pwFindView = new QFrame(this);
-    pwFindView->setGeometry(QRect(0, 0, 260, 100));
+    pwFindView->setGeometry(QRect(0, 0, 260, 120));
 
     int viewWidth = pwFindView->width();
     int margin = 8;
@@ -22,6 +22,10 @@ PwFind::PwFind(QWidget *parent)
     findBtn = util.makePushButton(this, "찾기", "", 12, true, "");
     findBtn->setGeometry(QRect(idField->x() + idField->width() + margin, idField->y(), 50, 30));
     connect(findBtn, SIGNAL(clicked(bool)), this, SLOT(findPw()));
+
+    pwFindLabel = new QLabel(this);
+    pwFindLabel->setGeometry(QRect(margin, idField->y()+idField->height(), 200, 30));
+    pwFindLabel->setText("");
 }
 
 void PwFind::findPw()
@@ -34,6 +38,7 @@ void PwFind::findPw()
     bool res = util.findID("user_info.txt", idField->text());
     if (res) {
         qDebug() << "찾을 아이디 있음";
+        pwFindLabel->setText("비밀번호 : "+ util.findPW("user_info.txt",idField->text()).split(":")[0]);
     } else {
         util.showErrorMsg(this, "존재하는 아이디가 없습니다.");
     }

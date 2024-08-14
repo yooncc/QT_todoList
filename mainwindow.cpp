@@ -55,7 +55,7 @@ void MainWindow::successedLogin(QString id)
 }
 
 void MainWindow::logout(){
-    this->setGeometry(QRect(0, 0, 200, 200));
+    this->setGeometry(QRect(50, 50, 200, 200));
     login = new Login();
     setCentralWidget(login);
 }
@@ -267,5 +267,7 @@ void MainWindow::managerLogout() {
     this->removeDockWidget(dock);
     this->removeToolBar(managerToolBar);
     this->setGeometry(QRect(50,50,200,200));
+    login = new Login();
+    setCentralWidget(login);
 }
     

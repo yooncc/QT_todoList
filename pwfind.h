@@ -16,6 +16,7 @@ private:
     QLabel *explainLabel;
     QLineEdit *idField;
     QPushButton *findBtn;
+    QLabel *pwFindLabel;
     Util util;
 
 public:

@@ -11,6 +11,7 @@
 #include "login.h"
 #include "manager.h"
 #include "util.h"
+#include "user.h"
 
 
 class MainWindow : public QMainWindow
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 private:
     Login* login;
+    User* user;
     Manager* manager;
     QToolBar *managerToolBar;
     QDockWidget *dock;

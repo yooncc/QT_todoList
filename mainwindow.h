@@ -1,3 +1,4 @@
+#pragma once
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -24,6 +25,7 @@ private:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void successedLogin(QString id);
+    void logout();
     Util util;
 public slots:
     void managerAdd();

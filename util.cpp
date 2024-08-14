@@ -58,7 +58,6 @@ QString Util::searchToDoInFile(QString filename) {
     file.close();
     return line;
 }
-
 bool Util::findID(QString filename, QString search)
 {
     QFile file(filename);
@@ -117,6 +116,21 @@ void Util::writeFile(QString filename, QString input)
     file.write(msg);
     file.close();
 }
+void Util::writeList(QString filename, QList<ClickableLabel*> list)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
+        qDebug() << "파일 생성 실패";
+        return;
+    }
+    for(int i=0;i<list.size();i++){
+    //    QByteArray msg = input.toUtf8();
+        QString line = list[i]->text()+"\n";
+        QByteArray msg = line.toUtf8();
+        file.write(msg);
+    }
+    file.close();
+}
 
 bool Util::deleteFile(QString filename,QString input) {
 
@@ -167,6 +181,3 @@ QAction* Util::makeAction(QString icon,QString text,QString shortCut,\
     return act;
 }
 
-// void Util::showLoadingView(double duration,QObject* where) {
-
-// }

@@ -24,7 +24,6 @@ void MainWindow::successedLogin(QString id)
         addDockWidget(Qt::BottomDockWidgetArea,dock);
         managerToolBar = new QToolBar("Manager",this);
         addToolBar(managerToolBar);
-
         managerToolBar->setToolButtonStyle(Qt::ToolButtonTextOnly);
 
         managerToolBar->addSeparator();
@@ -45,12 +44,21 @@ void MainWindow::successedLogin(QString id)
         managerToolBar->addSeparator();
 
         this->setGeometry(QRect(100,100,400,600+50));
-    }
-    else {  // 일반회원 로그인
-
+    } 
+    else { // 일반회원 로그인
+        user = new User();
+        user->id = id;
+        login->close();
+        setCentralWidget(user);
+        this->setGeometry(QRect(100, 100, 1000, 600));
     }
 }
 
+void MainWindow::logout(){
+    this->setGeometry(QRect(0, 0, 200, 200));
+    login = new Login();
+    setCentralWidget(login);
+}
 
 void MainWindow::managerAdd() {
     qDebug("add");
@@ -259,6 +267,5 @@ void MainWindow::managerLogout() {
     this->removeDockWidget(dock);
     this->removeToolBar(managerToolBar);
     this->setGeometry(QRect(50,50,200,200));
-    login = new Login();
-    setCentralWidget(login);
 }
+    

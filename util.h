@@ -1,17 +1,18 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <QDir>
+#include <QFile>
+#include <QMessageBox>
 #include <QObject>
 #include <QPushButton>
-#include <QMessageBox>
-#include <QFile>
-#include <QDir>
 
 class Util : public QObject
 {
     Q_OBJECT
 private:
-    QDir* directory;
+    QDir *directory;
+
 public:
     explicit Util(QObject *parent = nullptr);
     QPushButton* makePushButton(QWidget *parent,QString name,QString fontName,int fontSize,bool isBold,QString icon);
@@ -24,6 +25,7 @@ public:
     QString findIDPW(QString filename,QString search);
     QAction *makeAction(QString icon,QString text,QString shortCut,\
                         QString toolTip,QObject* recv,const char* slot);
+
 
 signals:
 };

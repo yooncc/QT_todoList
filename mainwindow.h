@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QDockWidget>
 #include <QMainWindow>
 #include <QDockWidget>
 #include <QToolBar>
@@ -19,6 +20,7 @@ private:
     Manager* manager;
     QToolBar *managerToolBar;
     QDockWidget *dock;
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void successedLogin(QString id);
@@ -29,7 +31,6 @@ public slots:
     void managerChange();
     void managerFind();
     void managerLogout();
-
 
 signals:
 };

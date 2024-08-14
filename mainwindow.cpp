@@ -6,11 +6,10 @@ MainWindow::MainWindow(QWidget *parent)
     this->setGeometry(QRect(50,50,200,200));
     login = new Login();
     setCentralWidget(login);
-
-
 }
 
-void MainWindow::successedLogin(QString id) {
+void MainWindow::successedLogin(QString id)
+{
     qDebug() << "로그인 성공 -2";
     if (id == "admin") { // 매니저 로그인
         manager = new Manager();

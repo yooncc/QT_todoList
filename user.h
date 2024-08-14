@@ -1,26 +1,36 @@
+#pragma once
 #ifndef USER_H
 #define USER_H
 
+#include <QFrame>
+#include <QGridLayout>
+#include <QVBoxLayout>
+#include <QGroupBox>
+#include <QInputDialog>
+#include <QLineEdit>
+#include <QMouseEvent>
 #include <QObject>
 #include <QWidget>
-#include <QFrame>
-#include <QFormLayout>
 #include <QtWidgets>
-#include <QMenuBar>
-#include <QGridLayout>
-#include <QInputDialog>
-#include <QGroupBox>
-#include <QFormLayout>
-#include <QMouseEvent>
-#include <QMessageBox>
+#include <QList>
+#include "util.h"
 #include "clickablelabel.h"
+#include "userlistedit.h"
 
-class User :public QWidget
+
+class User : public QWidget
 {
     Q_OBJECT
 public:
     explicit User(QWidget *parent = nullptr);
     ~User();
+    userListEdit* userlist;
+    ClickableLabel *label;
+    void modListLabel();
+    void delListLabel();
+    void doneListLabel();
+    ClickableLabel *currentL;
+    Util util;
 
 signals:
     void clicked();
@@ -28,20 +38,18 @@ signals:
 public slots:
     void addNewlist();
     void loadList();
-//    void onLabelClicked();
-    void onLabelClicked();
+    void saveList();
+    void onLabelClicked(ClickableLabel *label);
 
 private:
     int count = 0;
-
-    QPushButton* addButton;
-    QPushButton* loadButton;
-    QGridLayout* grid;
-    QLabel* listLabel;
-    QGroupBox* labelbox;
-    QFormLayout* formLayout;
-
-    ClickableLabel* label;
+    QPushButton *addButton;
+    QPushButton *loadButton;
+    QPushButton* saveButton;
+    QFrame* userview;
+    QVBoxLayout* boxLayout;
+    QGroupBox *labelbox;
+    QList<ClickableLabel*> labels;
 };
 
 #endif // USER_H

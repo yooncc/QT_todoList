@@ -1,7 +1,6 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
-#include <QWidget>
 #include <QFrame>
 #include <QScrollArea>
 #include <QScrollBar>
@@ -38,6 +37,7 @@ public:
 public slots:
     void memberBtnPressed();
     void memberFindBtnPressed();
+
 
 signals:
 };

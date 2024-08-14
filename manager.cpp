@@ -3,6 +3,7 @@
 Manager::Manager(QWidget *parent)
     : QWidget{parent}
 {
+
     managerView = new QFrame(this);
     managerView->setGeometry(QRect(0,0,400,600));
 

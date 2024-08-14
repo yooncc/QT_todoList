@@ -4,10 +4,14 @@ Util::Util(QObject *parent)
     : QObject{parent}
 {}
 
-QPushButton* Util::makePushButton(QWidget *parent = nullptr,QString name="",\
-                                  QString fontName="",int fontSize=12,\
-                                  bool isBold=false,QString icon="") {
-    QPushButton* newPushBtn = new QPushButton(name,parent);
+QPushButton *Util::makePushButton(QWidget *parent = nullptr,
+                                  QString name = "",
+                                  QString fontName = "",
+                                  int fontSize = 12,
+                                  bool isBold = false,
+                                  QString icon = "")
+{
+    QPushButton *newPushBtn = new QPushButton(name, parent);
     // newPushBtn->setText(name);
     newPushBtn->setIcon(QIcon(icon));
     QFont font;
@@ -19,16 +23,15 @@ QPushButton* Util::makePushButton(QWidget *parent = nullptr,QString name="",\
     return newPushBtn;
 }
 
-void Util::showErrorMsg(QWidget *parent,QString errMsg) {
-    QMessageBox::question(parent,"에러 발생",
-                          errMsg,
-                          QMessageBox::Yes
-                          );
+void Util::showErrorMsg(QWidget *parent, QString errMsg)
+{
+    QMessageBox::question(parent, "에러 발생", errMsg, QMessageBox::Yes);
 }
 
 QString Util::readFile(QString filename) {
     QFile file (filename);
     if ( !file.open(QIODevice::ReadWrite) ) {
+
         qDebug() << "파일 생성 실패";
         exit(0);
     }
@@ -56,18 +59,19 @@ QString Util::searchToDoInFile(QString filename) {
     return line;
 }
 
-bool Util::findID(QString filename,QString search) {
-    QFile file (filename);
-    if ( !file.open(QIODevice::ReadWrite) ) {
+bool Util::findID(QString filename, QString search)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite)) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }
 
-    QTextStream in (&file);
+    QTextStream in(&file);
     QString line;
     bool isFind = false;
     while (!in.atEnd()) {
-        line = in.readLine ();
+        line = in.readLine();
         qDebug() << line;
         qDebug() << line.split(";")[0];
         if (line.split(";")[0] == search) {
@@ -79,17 +83,18 @@ bool Util::findID(QString filename,QString search) {
     return isFind;
 }
 
-QString Util::findIDPW(QString filename,QString search) {
-    QFile file (filename);
-    if ( !file.open(QIODevice::ReadWrite) ) {
+QString Util::findIDPW(QString filename, QString search)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite)) {
         qDebug() << "파일 생성 실패";
         exit(0);
     }
 
-    QTextStream in (&file);
+    QTextStream in(&file);
     QString line;
     while (!in.atEnd()) {
-        line = in.readLine ();
+        line = in.readLine();
         qDebug() << line;
         qDebug() << line.split(";")[0];
         if (line.split(";")[0] == search) {
@@ -101,9 +106,10 @@ QString Util::findIDPW(QString filename,QString search) {
     return "";
 }
 
-void Util::writeFile(QString filename,QString input) {
-    QFile file (filename);
-    if ( !file.open(QIODevice::ReadWrite|QIODevice::Append) ) {
+void Util::writeFile(QString filename, QString input)
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Append)) {
         qDebug() << "파일 생성 실패";
         return;
     }
